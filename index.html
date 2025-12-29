@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,35 +17,30 @@ body {
     text-align: center;
 }
 
-/* CONTENEDOR CENTRADO */
 .contenedor {
     color: white;
     z-index: 2;
     max-width: 80%;
 }
 
-/* MENSAJE */
 .mensaje {
     font-size: 34px;
     line-height: 1.4;
     animation: latido 1.5s infinite;
 }
 
-/* NOMBRE */
 .nombre {
     font-size: 22px;
     margin-top: 15px;
     font-weight: bold;
 }
 
-/* ANIMACIÓN */
 @keyframes latido {
     0% { transform: scale(1); }
     50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
 
-/* CORAZONES */
 .corazon {
     position: absolute;
     bottom: -20px;
@@ -59,45 +53,34 @@ body {
     100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* MÚSICA */
 .musica {
     position: fixed;
     bottom: 20px;
     width: 100%;
     text-align: center;
-    z-index: 5;
 }
 
-.musica button {
-    background: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
+.musica a {
+    background: #1DB954;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
     font-size: 16px;
-    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MÚSICA -->
+<!-- BOTÓN SPOTIFY -->
 <div class="musica">
-    <iframe
-        id="player"
-        width="0"
-        height="0"
-        src=""
-        frameborder="0"
-        allow="autoplay">
-    </iframe>
-
-    <button onclick="reproducir()">
-        ▶️ Reproducir música
-    </button>
+    <a href="https://open.spotify.com/search/Te%20Amo%20Tanto%20Nigga" target="_blank">
+        🎵 Escuchar en Spotify
+    </a>
 </div>
 
-<!-- MENSAJE -->
 <div class="contenedor">
     <div class="mensaje">
         💖 Te amo mucho, gracias por permitirme estar a tu lado estos años 💖
@@ -108,11 +91,6 @@ body {
 </div>
 
 <script>
-function reproducir() {
-    document.getElementById("player").src =
-    "https://www.youtube.com/embed/XxmP9S7GzYQ?autoplay=1&loop=1&playlist=XxmP9S7GzYQ";
-}
-
 function crearCorazon() {
     const corazon = document.createElement("div");
     corazon.className = "corazon";
