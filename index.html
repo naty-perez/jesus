@@ -22,6 +22,10 @@ body {
 .contenedor {
     color: white;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .mensaje {
@@ -51,9 +55,44 @@ body {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(-110vh); opacity: 0; }
 }
+
+/* Botón de música */
+.musica {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.musica button {
+    background: rgba(255,255,255,0.85);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
+
+<!-- Música romántica -->
+<div class="musica">
+    <iframe
+        id="player"
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/0yW7w8F2TVA?loop=1&playlist=0yW7w8F2TVA"
+        title="Si Antes Te Hubiera Conocido - Karol G"
+        frameborder="0"
+        allow="autoplay">
+    </iframe>
+
+    <button onclick="document.getElementById('player').src += '&autoplay=1'">
+        ▶️ Reproducir música
+    </button>
+</div>
 
 <div class="contenedor">
     <div class="mensaje">💖 Te amo amo mucho 💖</div>
@@ -77,14 +116,12 @@ setInterval(crearCorazon, 300);
 </html>
 """
 
-# Crear archivo HTML
-nombre_archivo = "mensaje_amor.html"
-with open(nombre_archivo, "w", encoding="utf-8") as f:
+# Guardar archivo HTML
+with open("mensaje_amor.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-# Generar link universal
-ruta = os.path.abspath(nombre_archivo)
-link = f"file:///{ruta.replace(os.sep, '/')}"
+print("Archivo mensaje_amor.html creado 💕")
 
-print("💌 COPIA ESTE LINK Y ÁBRELO EN CUALQUIER NAVEGADOR 💌\n")
-print(link)
+
+
+
