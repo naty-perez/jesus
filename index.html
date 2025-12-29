@@ -1,11 +1,10 @@
-import os
 
-html = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Mensaje de Amor</title>
+
 <style>
 body {
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -19,31 +18,35 @@ body {
     text-align: center;
 }
 
+/* CONTENEDOR CENTRADO */
 .contenedor {
     color: white;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 80%;
 }
 
+/* MENSAJE */
 .mensaje {
-    font-size: 40px;
+    font-size: 34px;
+    line-height: 1.4;
     animation: latido 1.5s infinite;
 }
 
+/* NOMBRE */
 .nombre {
     font-size: 22px;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
+/* ANIMACIÓN */
 @keyframes latido {
     0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
 
+/* CORAZONES */
 .corazon {
     position: absolute;
     bottom: -20px;
@@ -56,7 +59,7 @@ body {
     100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Botón de música */
+/* MÚSICA */
 .musica {
     position: fixed;
     bottom: 20px;
@@ -66,40 +69,50 @@ body {
 }
 
 .musica button {
-    background: rgba(255,255,255,0.85);
+    background: white;
     border: none;
-    padding: 10px 22px;
+    padding: 12px 25px;
     border-radius: 25px;
     font-size: 16px;
     cursor: pointer;
 }
 </style>
 </head>
+
 <body>
 
-<!-- Música romántica -->
+<!-- MÚSICA -->
 <div class="musica">
     <iframe
         id="player"
         width="0"
         height="0"
-        src="https://www.youtube.com/embed/XxmP9S7GzYQ?loop=1&playlist=XxmP9S7GzYQ"
-        title="Te Amo Tanto – Ñejo & Dálmata"
+        src=""
         frameborder="0"
         allow="autoplay">
     </iframe>
 
-    <button onclick="document.getElementById('player').src += '&autoplay=1'">
+    <button onclick="reproducir()">
         ▶️ Reproducir música
     </button>
 </div>
 
+<!-- MENSAJE -->
 <div class="contenedor">
-    <div class="mensaje">💖 Te amo mucho, gracias por permitirme estar a tu lado estos años a tu lado 💖</div>
-    <div class="nombre">Para: Juan Carlos de Jesús Fernández</div>
+    <div class="mensaje">
+        💖 Te amo mucho, gracias por permitirme estar a tu lado estos años 💖
+    </div>
+    <div class="nombre">
+        Para: Juan Carlos de Jesús Fernández
+    </div>
 </div>
 
 <script>
+function reproducir() {
+    document.getElementById("player").src =
+    "https://www.youtube.com/embed/XxmP9S7GzYQ?autoplay=1&loop=1&playlist=XxmP9S7GzYQ";
+}
+
 function crearCorazon() {
     const corazon = document.createElement("div");
     corazon.className = "corazon";
@@ -109,18 +122,14 @@ function crearCorazon() {
     document.body.appendChild(corazon);
     setTimeout(() => corazon.remove(), 7000);
 }
+
 setInterval(crearCorazon, 300);
 </script>
 
 </body>
 </html>
-"""
 
-# Guardar archivo HTML
-with open("mensaje_amor.html", "w", encoding="utf-8") as f:
-    f.write(html)
 
-print("Archivo mensaje_amor.html creado 💕")
 
 
 
